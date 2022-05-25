@@ -1,4 +1,4 @@
-import MyLineChart from "./components/MyLineChart";
+import { MyLineChart } from "./components";
 
 function App() {
     const data = [

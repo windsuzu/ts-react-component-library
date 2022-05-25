@@ -13,3 +13,5 @@ https://tailwindcss.com/docs/installation/framework-guides
 // install recharts
 npm i recharts
 ```
+
+npm install rollup-plugin-postcss --save-dev

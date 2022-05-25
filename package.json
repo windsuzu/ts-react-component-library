@@ -1,7 +1,12 @@
 {
   "name": "ts-react-component-library",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "A library for building react components",
+  "private": false,
+  "author": "Jay Wang",
+  "publishConfig": {
+    "registry": "https://tv-verdaccio.herokuapp.com"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
@@ -22,8 +27,15 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "rollup": "rollup -c"
   },
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "files": [
+    "dist"
+  ],
+  "types": "dist/index.d.ts",
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -43,8 +55,14 @@
     ]
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^22.0.0",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-typescript": "^8.3.2",
     "autoprefixer": "^10.4.7",
     "postcss": "^8.4.14",
+    "rollup": "^2.74.1",
+    "rollup-plugin-dts": "^4.2.1",
+    "rollup-plugin-postcss": "^4.0.2",
     "tailwindcss": "^3.0.24"
   }
 }

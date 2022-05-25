@@ -15,3 +15,4 @@ npm i recharts
 ```
 
 npm install rollup-plugin-postcss --save-dev
+npm i --save-dev rollup-plugin-tailwindcss

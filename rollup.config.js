@@ -3,6 +3,8 @@ import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import dts from "rollup-plugin-dts";
 import postcss from "rollup-plugin-postcss";
+import { terser } from "rollup-plugin-terser";
+import peerDepsExternal from "rollup-plugin-peer-deps-external";
 
 const packageJson = require("./package.json");
 
@@ -23,10 +25,17 @@ const config = [
             },
         ],
         plugins: [
+            peerDepsExternal(),
             resolve(),
             commonjs(),
             typescript({ tsconfig: "./tsconfig.json" }),
-            postcss(),
+            postcss({
+                config: {
+                    path: "./postcss.config.js",
+                },
+                minimize: true,
+            }),
+            terser(),
         ],
     },
     // second configuration object defines how our libraries types are distributed and uses the dts plugin to do so.

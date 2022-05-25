@@ -1,6 +1,6 @@
 {
   "name": "ts-react-component-library",
-  "version": "1.0.0",
+  "version": "1.0.9",
   "description": "A library for building react components",
   "private": false,
   "author": "Jay Wang",
@@ -15,12 +15,7 @@
     "@types/node": "^16.11.36",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.5",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
     "react-scripts": "5.0.1",
-    "recharts": "^2.1.10",
-    "sass": "^1.52.1",
-    "typescript": "^4.6.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -28,7 +23,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "rollup": "rollup -c"
+    "rollup": "rm -rf dist && rollup -c"
   },
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -58,11 +53,20 @@
     "@rollup/plugin-commonjs": "^22.0.0",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@rollup/plugin-typescript": "^8.3.2",
-    "autoprefixer": "^10.4.7",
-    "postcss": "^8.4.14",
     "rollup": "^2.74.1",
     "rollup-plugin-dts": "^4.2.1",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
-    "tailwindcss": "^3.0.24"
+    "rollup-plugin-terser": "^7.0.2"
+  },
+  "peerDependencies": {
+    "autoprefixer": "^10.4.7",
+    "postcss": "^8.4.14",
+    "recharts": "^2.1.10",
+    "sass": "^1.52.1",
+    "tailwindcss": "^3.0.24",
+    "typescript": "^4.6.4",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
   }
 }

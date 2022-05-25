@@ -1,7 +1,15 @@
 # Installation
 
 ``` js
+// create new project with TypeScript
 npx create-react-app ts-react-component-library --template typescript
-```
 
-https://www.youtube.com/watch?v=ol2Z6uqfmlE
+// install SASS
+npm i sass
+
+// install tailwindCSS
+https://tailwindcss.com/docs/installation/framework-guides
+
+// install recharts
+npm i recharts
+```

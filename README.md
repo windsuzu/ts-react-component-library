@@ -26,6 +26,9 @@ npm i sass
 
 // install other dependencies, for example I want to also use recharts
 npm i recharts
+
+// install jest and react-testing-library for testing
+npm install @testing-library/react jest @types/jest --save-dev
 ```
 
 ### Install TailwindCSS
@@ -72,9 +75,10 @@ src/
 ┃ ┣  index.scss         # IMPORTANT: import tailwind for library
 ┃ ┗  index.ts           # IMPORTANT: library entry point
 ┃
-┣  App.tsx              # for test
-┣  index.scss           # for test
-┗  index.tsx            # for test
+┣  App.tsx              # for develop use
+┣  index.scss           # for develop use
+┣  index.tsx            # for develop use
+┗  setupTests.ts        # for unit test using jest & react-testing-library
 ```
 
 ## Tailwind Config
@@ -254,7 +258,7 @@ import peerDepsExternal from 'rollup-plugin-peer-deps-external';
   },
 
   "scripts": {
-    "test": "jest",
+    "test": "react-scripts test",
     "rollup": "rm -rf dist && rollup -c"  // npm run rollup
   },
 
@@ -306,7 +310,13 @@ registry=http://localhost:4873
 
 ## Storybook
 
-## Test
+
+
+## Adding Test
+
+因為我們使用 `create-react-app` 來創建這個專案，所以我們可以很輕鬆的使用內建的 `npm test` 來運行 `react-scripts test` 進行測試。記得專案中必須保留 `src/setupTests.ts` 才能進行元件的測試哦！
+
+如果你想進一步了解如何編寫 unit test，歡迎查看另外一個 repo - [web testing for beginners](https://github.com/windsuzu/web-testing-beginner)。
 
 ## TroubleShooting
 

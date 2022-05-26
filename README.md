@@ -254,7 +254,7 @@ import peerDepsExternal from 'rollup-plugin-peer-deps-external';
   "private": false,
 
   "publishConfig": {
-    "registry": "http://localhost:4873"
+    "registry": "http://your-local-npm-server"
   },
 
   "scripts": {
@@ -296,17 +296,17 @@ import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 - [Verdaccio Documentation](https://verdaccio.org/docs/installation)
 - [Verdaccio 部署 Heroku 教學](https://medium.com/starbugs/%E7%94%A8-verdaccio-%E5%BF%AB%E9%80%9F%E5%BB%BA%E7%AB%8B%E5%B0%88%E5%B1%AC%E7%9A%84-private-npm-proxy-%E4%B8%A6%E9%83%A8%E7%BD%B2%E5%88%B0-heroku-%E4%B8%8A-7866d2a0494c)
 
-我們可以在專案最上層建立 `.npmrc` 並設定 registry 的網址，這可以讓我們將 `npm install --registry http://localhost:4873` 省略為 `npm install`。
+我們可以在專案最上層建立 `.npmrc` 並設定 registry 的網址，這可以讓我們將 `npm install --registry http://your-local-npm-server` 省略為 `npm install`。
 
 ```
 // .npmrc
-registry=http://localhost:4873
+registry=http://your-local-npm-server
 ```
 
 其他常用的指令還有：
 
 - `npm get registry` - 可以查看 registry 的設定有沒有正確
-- `npm login --registry http://localhost:4873` - 需要在 publish 前登入
+- `npm login --registry http://your-local-npm-server` - 需要在 publish 前登入
 
 ## Storybook
 

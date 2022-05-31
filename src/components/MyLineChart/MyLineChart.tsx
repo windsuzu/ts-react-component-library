@@ -9,7 +9,7 @@ import {
 } from "recharts";
 import "./MyLineChart.scss";
 
-interface MyLineChartData {
+export interface MyLineChartData {
     name: string;
     uv: number;
     pv: number;

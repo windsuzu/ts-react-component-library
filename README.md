@@ -310,13 +310,78 @@ registry=http://your-local-npm-server
 
 ## Storybook
 
+- 透過以下指令安裝 storybook 到你正在開發的專案中 (Ref: [Install Storybook](https://storybook.js.org/docs/react/get-started/install))
+  ```
+  npx storybook init
+  ```
 
+- 開始撰寫每個元件的 story
+  - [MyLineChart.stories.tsx](src/components/MyLineChart/MyLineChart.stories.tsx)
+
+- 由於我的元件引入了 `.scss` 的檔案，我必須要為 Storybook 導入 SCSS preset
+  - Follow this [configuration](https://github.com/storybookjs/presets/tree/master/packages/preset-scss)
+
+- 你可以在 `preview.js` 中添加以下的設定，這樣你的 storybook 就會按照字母順序排列
+  - [.storybook/preview.js](.storybook/preview.js)
+  ``` js
+  export const parameters = {
+    options: {
+      storySort: (a, b) =>
+        a[1].kind === b[1].kind ? 0 : a[1].id.localeCompare(b[1].id, undefined, { numeric: true }),
+    },
+  };
+  ```
+
+### Advanced
+
+當你的元件庫越寫越大時，可能會將多個元件寫在一個 Story，或是將多個元件組成一個頁面。我們可以透過引入其他 Story 和其 args 來加快 Story 的編寫。
+
+- Building Stories for multiple componenets
+  - [Stories for multiple components](https://storybook.js.org/docs/react/writing-stories/stories-for-multiple-components)
+
+- Building Stories for a page or screen
+  - [Args composition for presentational screens](https://storybook.js.org/docs/react/writing-stories/build-pages-with-storybook#args-composition-for-presentational-screens)
+
+你也可能需要控制 API 的回傳狀態 (成功或失敗) 來展示元件，這時候你可以使用 MSW (mock service worker) 來模擬 API 的回傳。
+
+- Mocking with MSW
+  - [Mocking connected components](https://storybook.js.org/docs/react/writing-stories/build-pages-with-storybook#mocking-connected-components)
+  - [Mocking API Services](https://storybook.js.org/tutorials/intro-to-storybook/react/en/screen/#:~:text=Mocking%20API%20Services)
 
 ## Adding Test
 
 因為我們使用 `create-react-app` 來創建這個專案，所以我們可以很輕鬆的使用內建的 `npm test` 來運行 `react-scripts test` 進行測試。記得專案中必須保留 `src/setupTests.ts` 才能進行元件的測試哦！
 
 如果你想進一步了解如何編寫 unit test，歡迎查看另外一個 repo - [web testing for beginners](https://github.com/windsuzu/web-testing-beginner)。
+
+### Testing with Storybook
+
+- [Import stories in tests](https://storybook.js.org/docs/react/writing-tests/importing-stories-in-tests)
+- [Using Storybook stories with Testing Library](https://www.youtube.com/watch?v=k6NG96awIJ0)
+
+``` js
+// installation
+// https://www.npmjs.com/package/@storybook/testing-react
+npm install --save-dev @storybook/testing-react
+```
+
+```js
+// MyLineChart.stories.tsx
+import { render, screen } from "@testing-library/react";
+import { composeStories } from "@storybook/testing-react";
+import * as stories from "./MyLineChart.stories";
+
+// processes all the information needed for this story (e.g. args)
+const { Small } = composeStories(stories);
+
+describe("Testing with Storybook", () => {
+    it("should render empty chart", () => {
+        render(<Small />);
+        const uv_legend = screen.getByText("uv");
+        expect(uv_legend).toBeInTheDocument();
+    });
+});
+```
 
 ## TroubleShooting
 

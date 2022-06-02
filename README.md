@@ -2,6 +2,26 @@
 
 這個專案要教你如何使用 `create-react-app` 和 rollup 還有 verdaccio 建立一個私人的 react component library，我們將在 library 中使用 `TypeScript`, `SASS`, `TailwindCSS` 還有其他的 third-libraries，以及架設好 `Storybook` 以及測試環境。
 
+* [About](#about)
+* [Installation](#installation)
+  * [Basic Dependencies](#basic-dependencies)
+  * [Install TailwindCSS](#install-tailwindcss)
+  * [Install Rollup.js](#install-rollupjs)
+* [Library Structure](#library-structure)
+* [Tailwind Config](#tailwind-config)
+* [TypeScript Config](#typescript-config)
+* [Rollup Config](#rollup-config)
+  * [Basic Setup](#basic-setup)
+  * [SCSS Setup](#scss-setup)
+  * [Optimization Setup](#optimization-setup)
+* [Package.json](#packagejson)
+* [Verdaccio NPM Proxy](#verdaccio-npm-proxy)
+* [Storybook](#storybook)
+  * [Advanced](#advanced)
+* [Adding Test](#adding-test)
+  * [Testing with Storybook](#testing-with-storybook)
+* [TroubleShooting](#troubleshooting)
+
 ## About
 
 這個專案基於 [alexeagleson / template-react-component-library](https://github.com/alexeagleson/template-react-component-library)，並且做了以下的調整：
